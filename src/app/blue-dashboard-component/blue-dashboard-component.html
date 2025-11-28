@@ -1,0 +1,63 @@
+<div class="reports-container">
+<div class="d-flex">
+  <main class="flex-fill p-5 bg-light">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3>Reports</h3>
+      <div>Admin: Vennela Rajasri</div>
+    </div>
+
+
+    <div class="d-flex justify-content-start align-items-center mb-4">
+      <div class="filter-group me-3">
+        <label for="monthSelect" class="form-label">Month</label>
+        <select id="monthSelect" class="form-select form-select-sm" [(ngModel)]="selectedMonth"
+          (change)="onFilterChange()">
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+      </div>
+
+      <div class="filter-group me-3">
+        <label for="yearSelect" class="form-label">Year</label>
+        <select id="yearSelect" class="form-select form-select-sm" [(ngModel)]="selectedYear"
+          (change)="onFilterChange()">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+
+      <!-- Chart Color Filter -->
+      <!-- <div class="filter-group">
+        <label for="chartColorSelect" class="form-label">Chart Color</label>
+        <input type="color" id="chartColorSelect" [(ngModel)]="chartColor" (input)="onColorChange()" />
+      </div> -->
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-3 mb-3" *ngFor="let kpi of kpis">
+        <div class="card text-center p-3 kpi-card">
+          <div class="icon text-{{kpi.color}}"><i class="bi {{kpi.icon}}"></i></div>
+          <div class="h5">{{kpi.value}}</div>
+          <div>{{kpi.title}}</div>
+          <small class="text-muted">{{kpi.delta}}</small>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <div class="card p-4">
+          <h6>Report Chart 1: Permit Volume</h6>
+          <div #permitVolumeChart></div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="card p-4">
+          <h6>Report Chart 2: Permit Status</h6>
+          <div #permitStatusChart></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</div>
